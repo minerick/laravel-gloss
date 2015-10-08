@@ -1,5 +1,5 @@
 {
-    "name": "ilkermutlu/gloss",
+    "name": "ilkermutlu/laravel-gloss",
     "description": "This package is a helper to create glossary-like views.",
     "keywords": [
         "laravel"
