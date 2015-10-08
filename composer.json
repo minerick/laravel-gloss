@@ -1,0 +1,25 @@
+{
+    "name": "ilkermutlu/gloss",
+    "description": "This package is a helper to create glossary-like views.",
+    "keywords": [
+        "laravel"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ilker Mutlu",
+            "email": "ilker.mutlu@gmail.com",
+            "homepage" "http://www.ilkermutlu.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": "5.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "IlkerMutlu\\Gloss\\": "src/"
+        }
+    }
+}
