@@ -29,26 +29,20 @@ class Gloss {
 
     public function make()
     {
-        try {
-            return $this->reduce();
-        } catch (\Exception $e) {
-            echo 'Name not found.';
-        }
+        return $this->reduce();
     }
 
     public function reduce()
     {
-        $reduced = $this->collection->reduce(function($groupedByFirstLetter, $record) {
-            if (isset($record->{$this->name})) {
-                $firstCharacter = mb_substr($record->{$this->name}, 0, 1);
-                if (!isset($groupedByFirstLetter[$firstCharacter])) {
-                    $groupedByFirstLetter[$firstCharacter] = [];
-                }
-                $groupedByFirstLetter[$firstCharacter][] = $record;
-                return $groupedByFirstLetter;
-            } else {
-                throw new \Exception;
+        $reduced = $this->collection->reject(function ($rec) {
+            return isset($record->{$this->name});
+        })->reduce(function($groupedByFirstLetter, $record) {
+            $firstCharacter = mb_substr($record->{$this->name}, 0, 1);
+            if (!isset($groupedByFirstLetter[$firstCharacter])) {
+                $groupedByFirstLetter[$firstCharacter] = [];
             }
+            $groupedByFirstLetter[$firstCharacter][] = $record;
+            return $groupedByFirstLetter;
         }, []);
         return $reduced;
     }
